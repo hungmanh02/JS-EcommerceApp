@@ -2,13 +2,17 @@ const inputName = document.querySelector(".name");
 const inputPassword = document.querySelector(".password");
 const button = document.querySelector("div.form-container button");
 
+const userRegisterStorage = JSON.parse(localStorage.getItem("userRegister"));
 button.addEventListener("click", function (e) {
   e.preventDefault();
-  const userRegisterStorage = JSON.parse(localStorage.getItem("userRegister"));
 
   // console.log(userRegisterStorage);
-  if (inputName.value == "" || inputPassword == "") {
-    alert("vui lòng nhập thông tin đăng nhập hệ thống");
+  if (inputName.value == "" || inputPassword.value == "") {
+    swal({
+      title: "Đăng ký thất bại",
+      text: "Vui lòng nhập lại những thông tin đăng ký",
+      icon: "error",
+    });
   } else {
     userRegisterStorage.map(function (element) {
       if (
