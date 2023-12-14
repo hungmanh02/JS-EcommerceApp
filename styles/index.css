@@ -300,6 +300,7 @@ section {
 
 .product .box-container .box:hover .icons {
   left: 1rem;
+  z-index: 2;
 }
 
 .product .box-container .box .icons a:hover {
