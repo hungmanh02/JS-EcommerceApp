@@ -7,7 +7,8 @@ userName.innerHTML = userLogin?.name || "";
 button.addEventListener("click", function (e) {
   e.preventDefault();
   localStorage.removeItem("userLogin");
+  window.location.href = "register.html";
 });
-if (userLogin == undefined) {
+if (userLogin === undefined) {
   window.location.href = "register.html";
 }
