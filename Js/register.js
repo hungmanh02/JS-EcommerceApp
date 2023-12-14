@@ -1,8 +1,5 @@
 const formContainer = document.querySelector("div.form-container");
 const button = formContainer.querySelector("button");
-const inputNameValue = formContainer.querySelector(".name");
-const inputEmailValue = formContainer.querySelector(".email");
-const inputPasswordValue = formContainer.querySelector(".password");
 const container = document.querySelector(".container");
 const loader = document.querySelector(".loader");
 
@@ -13,17 +10,21 @@ setTimeout(() => {
 
 button.addEventListener("click", function (e) {
   e.preventDefault();
-  const userRegister = {
-    name: inputNameValue.value,
-    email: inputEmailValue.value,
-    password: inputPasswordValue.value,
-  };
+  let userRegister = {};
+  let users = JSON.parse(localStorage.getItem("userRegister")) || [];
+  formContainer.querySelectorAll("input").forEach(function (element) {
+    userRegister[element.name] = element.value;
+  });
   if (
-    inputNameValue.value == "" ||
-    inputEmailValue.value == "" ||
-    inputPasswordValue == ""
+    userRegister.name == "" ||
+    userRegister.email == "" ||
+    userRegister.password == ""
   ) {
-    alert("vui lòng nhập lại thông tin");
+    swal({
+      title: "Đăng ký thất bại",
+      text: "Vui lòng nhập lại những thông tin đăng ký",
+      icon: "error",
+    });
   } else {
     async function postData(urlApi = "", data = {}) {
       const config = {
@@ -39,12 +40,12 @@ button.addEventListener("click", function (e) {
       userRegister
     );
     res.then((data) => {
-      localStorage.setItem("userRegister", JSON.stringify(data));
+      users.push(data);
+      localStorage.setItem("userRegister", JSON.stringify(users));
     });
 
     swal({
-      title: "Good job!",
-      text: "You clicked the button!",
+      title: "Đăng ký tài khoản thành công",
       icon: "success",
     }).then(() => {
       setTimeout(() => {
