@@ -76,7 +76,15 @@ header .user .username {
   color: #000;
   margin: 0 2rem;
 }
-
+header .user button.cart-product {
+  border-radius: none;
+  border: none;
+  background-color: white;
+  width: 40px;
+  font-size: 25px;
+  color: black;
+  padding: 12px 45px 12px 0;
+}
 header .user button {
   border-radius: 20px;
   border: 1px solid #1f409a;
@@ -550,7 +558,6 @@ section {
   header .user .username {
     display: none;
   }
-
   header .user button {
     padding: 8px 30px;
   }

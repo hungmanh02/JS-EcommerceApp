@@ -33,3 +33,32 @@ buttonPrevSlide.addEventListener("click", () => {
   index = (index - 1 + slides.length) % slides.length;
   slides[index].classList.add("active");
 });
+
+const productContainer = document.querySelector("#product .box-container");
+// console.log(productContainer);
+fetch("https://fakestoreapi.com/products?limit=10")
+  .then((res) => res.json())
+  .then(function (data) {
+    data.forEach((element) => {
+      productContainer.innerHTML += `<div class="box">
+        <div class="icons">
+          <a href="#" class="fa fa-heart"></a>
+          <a href="#" class="fa fa-share"></a>
+          <a href="#" class="fa fa-eye"></a>
+        </div>
+        <div class="content">
+          <img src="${element.image}" alt="" />
+          <h3>${element.title}</h3>
+          <div class="price">$${element.price} </div> 
+          <div><a href="#" data-id="${element.id}" class="btn">add to card</a></div>
+          <div class="stars">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+        </div>
+      </div>`;
+    });
+  });
