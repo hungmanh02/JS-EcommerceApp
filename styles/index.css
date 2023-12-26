@@ -69,6 +69,7 @@ header .icons a:hover {
 header .user {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 header .user .username {
@@ -84,6 +85,12 @@ header .user button.cart-product {
   font-size: 25px;
   color: black;
   padding: 12px 45px 12px 0;
+  position: relative;
+}
+#count {
+  position: absolute;
+  top: 0;
+  right: 2px;
 }
 header .user button {
   border-radius: 20px;
@@ -113,7 +120,10 @@ div#menu-bar {
   cursor: pointer;
   display: none;
 }
-
+.cart-detail {
+  margin: 100px;
+  width: 1024px;
+}
 /*  Slider */
 
 section {
