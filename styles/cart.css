@@ -1,0 +1,12 @@
+.cart-detail div {
+  height: 50px;
+  text-align: right;
+}
+.close-cart,
+.check-out-cart {
+  margin-top: 20px;
+  padding: 20px 20px;
+  background-color: yellow;
+  width: 200px;
+  height: 100%;
+}
